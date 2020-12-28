@@ -39,9 +39,6 @@ foreach(source_names ${all_source_file})
     )
 
 
-    target_compile_options(${PROJECT_NAME} PRIVATE /TC )
-
-
     # set target compile definitions
     target_compile_definitions(${PROJECT_NAME} PRIVATE -D_CRT_SECURE_NO_WARNINGS)
     target_compile_definitions(${PROJECT_NAME} PRIVATE -D_WIN32_WINNT=0x0a00)
