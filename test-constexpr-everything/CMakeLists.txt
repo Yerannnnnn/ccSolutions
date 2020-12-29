@@ -36,6 +36,7 @@ foreach(source_names ${all_source_file})
         <thread>
         <list>
         <iostream>
+        <array>
     )
 
 
