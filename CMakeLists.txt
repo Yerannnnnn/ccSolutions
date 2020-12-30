@@ -29,4 +29,4 @@ set(CMAKE_CXX_FLAGS_RELEASE "/MD /O2 /Ob2 /DNDEBUG /Oi /Ot /Oy /GT /GL")
 
 # add_subdirectory(leetcode)
 add_subdirectory(test-constexpr-everything)
-
+add_subdirectory(leetcode-vscode)

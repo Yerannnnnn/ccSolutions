@@ -9,15 +9,19 @@ set(output "")
 file(GLOB all_source_file RELATIVE ${curpath} ${curpath}/*.cc ${curpath}/*.c ${curpath}/*.cpp)
 
 foreach(source_names ${all_source_file})
-    # get head file
-    file(GLOB source_head ${source}.h )
 
-    # set up project
-    STRING(REGEX REPLACE "(.+)\\..*" "\\1" source ${source_names})
-    project(${source})
+
+    # get base name
+    STRING(REGEX REPLACE "(.+)\\..*" "\\1" base_name ${source_names})
+    # get head file
+    file(GLOB source_head ${base_name}.h )
+    # fix base name
+    STRING(REGEX REPLACE ".*\\.(.*)" "\\1" pj_name ${base_name})
+
+    project("${pj_name}")
 
     # add source to project
-    add_executable(${PROJECT_NAME} ${source} ${source_head})
+    add_executable(${PROJECT_NAME} "${source_names} ${source_head}")
 
     # set target properties
     set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER ${folder_name})
