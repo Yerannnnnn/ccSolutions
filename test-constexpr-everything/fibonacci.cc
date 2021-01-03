@@ -1,4 +1,4 @@
-// see https://godbolt.org/z/T47aG6
+// compiler see https://godbolt.org/z/T47aG6
 
 constexpr uint64_t factorial(uint64_t n) { return n <= 1 ? 1 : (n * factorial(n - 1)); }
 

@@ -5,7 +5,6 @@ STRING(REGEX REPLACE ".*/(.*)" "\\1" folder_name ${CMAKE_CURRENT_SOURCE_DIR})
 # 单文件生成可执行文件
 
 set(curpath ${CMAKE_CURRENT_LIST_DIR})
-set(output "")
 file(GLOB all_source_file RELATIVE ${curpath} ${curpath}/*.cc ${curpath}/*.c ${curpath}/*.cpp)
 
 foreach(source_names ${all_source_file})
@@ -43,9 +42,6 @@ foreach(source_names ${all_source_file})
     # set target compile definitions
     target_compile_definitions(${PROJECT_NAME} PRIVATE -D_CRT_SECURE_NO_WARNINGS)
     target_compile_definitions(${PROJECT_NAME} PRIVATE -D_WIN32_WINNT=0x0a00)
-
-
-
 
 endforeach()
 
