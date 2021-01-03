@@ -30,6 +30,7 @@
  */
 
 // @lc code=start
+using namespace std;
 class Solution {
 public:
   vector<int> twoSum(vector<int> &nums, int target) {
@@ -52,3 +53,31 @@ public:
 };
 // @lc code=end
 
+// #define CATCH_CONFIG_MAIN
+#define CATCH_CONFIG_RUNNER
+#include <catch2/catch.hpp>
+
+Solution sol;
+TEST_CASE("basic tests 1", "[test 1]") {
+    vector<int32_t> vec{2, 7, 11, 15};
+    auto result = sol.twoSum(vec, 9);
+    SECTION("size is always 2") {
+        CHECK(result.size() == 2);
+    }
+    SECTION("test cases") {
+        CHECK_THAT(result, Catch::Matchers::UnorderedEquals<int>({0, 1}));
+        CHECK_THAT(result, Catch::Matchers::Contains<int>({0, 1}));
+    }
+}
+
+TEST_CASE("basic tests 2", "[test 2]") {
+    vector<int32_t> vec{3, 2, 4};
+    auto result = sol.twoSum(vec, 6);
+    SECTION("size is always 2") {
+        CHECK(result.size() == 2);
+    }
+    SECTION("test cases") {
+        CHECK_THAT(result, Catch::Matchers::UnorderedEquals<int32_t>({1, 2}));
+        CHECK_THAT(result, Catch::Matchers::Contains<int32_t>({}));
+    }
+}

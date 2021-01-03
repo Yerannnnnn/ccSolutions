@@ -16,7 +16,7 @@ foreach(source_names ${all_source_file})
     # get head file
     file(GLOB source_head ${base_name}.h )
     # fix base name
-    STRING(REGEX REPLACE ".*\\.(.*)" "\\1" pj_name ${base_name})
+    STRING(REGEX REPLACE "(.*)\\.(.*)" "\\1" pj_name ${base_name})
 
     project("${pj_name}")
 
@@ -47,7 +47,10 @@ foreach(source_names ${all_source_file})
     target_compile_definitions(${PROJECT_NAME} PRIVATE -D_CRT_SECURE_NO_WARNINGS)
     target_compile_definitions(${PROJECT_NAME} PRIVATE -D_WIN32_WINNT=0x0a00)
 
-
+    #set target include directories
+    target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_INSTALL_PREFIX}/catch2/src/catch2/single_include)
+    # target_compile_definitions(${PROJECT_NAME} PRIVATE -DCATCH_CONFIG_RUNNER)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE -DCATCH_CONFIG_MAIN)
 
 
 endforeach()
